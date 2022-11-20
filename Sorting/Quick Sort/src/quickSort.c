@@ -1,24 +1,18 @@
-void quickSort(int *arr, int start, int end)
+void quickSort(int *ptr, int size)
 {
-    if (start < end)
+    int pivot = ptr[size - 1];
+    int i = 0, j = 0;
+    for (i = 0; i < size - 1; i++)
     {
-        int pivot = arr[end];
-        int pIndex = start;
-        int i, temp;
-        for (i = start; i < end; i++)
+        if (ptr[i] < pivot)
         {
-            if (arr[i] <= pivot)
-            {
-                temp = arr[i];
-                arr[i] = arr[pIndex];
-                arr[pIndex] = temp;
-                pIndex++;
-            }
+            swap(&ptr[i], &ptr[j]);
+            j++;
         }
-        temp = arr[pIndex];
-        arr[pIndex] = arr[end];
-        arr[end] = temp;
-        quickSort(arr, start, pIndex - 1);
-        quickSort(arr, pIndex + 1, end);
     }
+    swap(&ptr[j], &ptr[size - 1]);
+    if (j > 1)
+        quickSort(ptr, j);
+    if (size - j - 1 > 1)
+        quickSort(ptr + j + 1, size - j - 1);
 }

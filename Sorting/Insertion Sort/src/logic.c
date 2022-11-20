@@ -11,7 +11,7 @@ void logic()
     inputArray(arr, size);
     printf("The initial Array is: ");
     printArray(arr, size);
-    quickSort(arr, size);
+    insertionSort(arr, size);
     printf("The sorted Array is: ");
     printArray(arr, size);
     free(arr);
